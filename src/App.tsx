@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import NavBar from "./components/NavBar";
+import Home from "./components/Home";
+import ParticlesBackground from "./components/ParticlesBackground";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div>
+            <ParticlesBackground />
+            <NavBar />
+            <section id="home" style={{ height: "100vh", background: "#f0f0f0" }}>
+                <Home/>
+            </section>
+            <section id="experiences" style={{ height: "100vh", background: "#ddd" }}>
+                <h1>Experiences</h1>
+            </section>
+            <section id="projects" style={{ height: "100vh", background: "#bbb" }}>
+                <h1>Projects</h1>
+            </section>
+            <section id="skills" style={{ height: "100vh", background: "#999" }}>
+                <h1>Skills</h1>
+            </section>
+        </div>
+    );
 }
 
 export default App;
