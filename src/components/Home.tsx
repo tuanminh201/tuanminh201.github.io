@@ -1,11 +1,20 @@
+import { keyframes } from "@emotion/react";
 import { Box, Text, Badge, VStack, Image } from "@chakra-ui/react";
 import { motion, useAnimation } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Rocket from "../assets/img/rocket.png";
+import Avatar from "../assets/img/avatar.png";
 
 const MotionBox = motion(Box);
 const MotionImage = motion(Image);
 const MotionText = motion(Text);
+
+// Dấu nhấp nháy animation
+const blink = keyframes`
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+`;
 
 export default function Home() {
     const rocketControls = useAnimation();
@@ -18,6 +27,48 @@ export default function Home() {
     const [launching, setLaunching] = useState(false);
     const [showHint, setShowHint] = useState(true);
 
+    // Typing animation
+    const fullText = "Hi! I'm Tuan Minh";
+    const [typedText, setTypedText] = useState("");
+    const [isDeleting, setIsDeleting] = useState(false);
+
+    useEffect(() => {
+        let index = 0;
+        let deleting = false;
+
+        const type = () => {
+            if (!deleting) {
+                if (index <= fullText.length) {
+                    setTypedText(fullText.slice(0, index));
+                    index++;
+                    setTimeout(type, 100);
+                } else {
+                    setTimeout(() => {
+                        deleting = true;
+                        setIsDeleting(true);
+                        index = fullText.length;
+                        type();
+                    }, 10000); // Đợi 30 giây
+                }
+            } else {
+                if (index >= 0) {
+                    setTypedText(fullText.slice(0, index));
+                    index--;
+                    setTimeout(type, 50);
+                } else {
+                    deleting = false;
+                    setIsDeleting(false);
+                    index = 0;
+                    setTimeout(type, 300);
+                }
+            }
+        };
+
+        type();
+
+        return () => {};
+    }, []);
+
     const handleLaunch = async () => {
         if (launching) return;
         setLaunching(true);
@@ -29,7 +80,7 @@ export default function Home() {
             if (count === 0) {
                 clearInterval(countdownInterval);
                 setCountdown(null);
-                setShowHint(false); // Ẩn hint khi launch
+                setShowHint(false);
                 launchSequence();
             } else {
                 setCountdown(count);
@@ -99,7 +150,7 @@ export default function Home() {
 
             longFireTrailControls.set({ height: 0, opacity: 0 });
 
-            setShowHint(true); // Hiện lại hint khi quay về
+            setShowHint(true);
             setLaunching(false);
         }, 3500);
     };
@@ -116,7 +167,17 @@ export default function Home() {
             overflow="hidden"
         >
             {/* Text bên trái */}
-            <VStack align="flex-start" position="absolute" left="10%" top="40%">
+            <VStack align="flex-start" position="absolute" left="15%" top="25%">
+                <Image
+                    src={Avatar}
+                    alt="Avatar"
+                    boxSize="250px"
+                    borderRadius="full"
+                    border="3px solid white"
+                    objectFit="cover"
+                    transition="all 0.3s ease"
+                    _hover={{ transform: "scale(1.05)", boxShadow: "0 0 15px white" }}
+                />
                 <Badge
                     colorScheme="purple"
                     px={4}
@@ -126,11 +187,22 @@ export default function Home() {
                 >
                     Welcome to my Portfolio
                 </Badge>
-                <Text fontSize="7xl" fontWeight="bold" color="white">
-                    Hi! I'm Tuan Minh
+                <Text fontSize="7xl" fontWeight="bold" color="white" minH ="110px">
+                    {typedText}
+                    {(typedText !== "" || isDeleting) && (
+                        <Box as="span" animation={`${blink} 1s step-start infinite`}>
+                            |
+                        </Box>
+                    )}
                 </Text>
                 <Text fontSize="lg" opacity={0.8} maxW="500px" color="white">
-                    A CS student at Johannes Gutenberg University of Mainz
+                    Undergraduate student of Computer Science at JGU Mainz
+                </Text>
+                <Text fontSize="3xl" fontWeight="bold" maxW="500px" color="white">
+                    About Me
+                </Text>
+                <Text fontSize="lg" opacity={0.8} maxW="700px" color="white" top="10%">
+                    "Hi, I'm Minh, an IT student passionate about fullstack development and machine learning. I enjoy building interactive web applications using React, TypeScript, and CSS. My goal is to pursue a master's degree in Artificial Intelligence to deepen my expertise and contribute to innovative projects."
                 </Text>
             </VStack>
 
