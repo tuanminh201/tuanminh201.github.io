@@ -5,7 +5,7 @@ import logo from "../assets/img/logo.png";
 
 export default function NavBar() {
     const [activeSection, setActiveSection] = useState("home");
-    const [language, setLanguage] = useState<"EN" | "DE">("EN"); // ngôn ngữ mặc định
+    const [language, setLanguage] = useState<"EN" | "DE">("EN");
 
     const sections = ["home", "experiences", "projects", "skills"];
 
@@ -104,18 +104,17 @@ export default function NavBar() {
                     </Text>
                 </Box>
 
-                {/* Các icon mạng xã hội */}
-                <Link href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+                <Link href="https://linkedin.com/in/tuan-minh-do-2262b3236" target="_blank" rel="noopener noreferrer">
                     <IconButton aria-label="LinkedIn" variant="ghost" color="white">
                         <FaLinkedin />
                     </IconButton>
                 </Link>
-                <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
+                <Link href="https://github.com/tuanminh201" target="_blank" rel="noopener noreferrer">
                     <IconButton aria-label="GitHub" variant="ghost" color="white">
                         <FaGithub />
                     </IconButton>
                 </Link>
-                <Link href="mailto:your.email@example.com">
+                <Link href="mailto:do.tuanminh201@gmail.com">
                     <IconButton aria-label="Email" variant="ghost" color="white">
                         <FaEnvelope />
                     </IconButton>

@@ -9,7 +9,7 @@ const experiences = [
     {
         role: "Working Student - Data Analyst",
         company: "DB InfraGO GmbH",
-        time: "Oct 2023 - Present",
+        time: "Oct 2023 - Mar 2025",
         tech: ["Data Analysis","VBA/Excel","PowerBI"],
         highlights: [
             "Collected and organized datasets from various sources",
@@ -41,7 +41,7 @@ export default function ExperienceTimeline() {
     return (
         <Box position="relative" maxW="6xl" mx="auto" py={10} px={6}>
             <Text fontSize="5xl" fontWeight="bold" textAlign="center" mb={12} color="white">
-                🗓 Work Experience Timeline
+                🗓 Work Experiences Timeline
             </Text>
 
             <Box position="relative" height="100%" ml="1px">

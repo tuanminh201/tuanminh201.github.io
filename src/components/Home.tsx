@@ -202,7 +202,7 @@ export default function Home() {
                     About Me
                 </Text>
                 <Text fontSize="lg" opacity={0.8} maxW="700px" color="white" top="10%">
-                    "Hi, I'm Minh, an IT student passionate about fullstack development and machine learning. I enjoy building interactive web applications using React, TypeScript, and CSS. My goal is to pursue a master's degree in Artificial Intelligence to deepen my expertise and contribute to innovative projects."
+                    "Hi, I'm Minh, an IT student passionate about fullstack development and machine learning. I enjoy building interactive websites.. My goal is to pursue a master's degree in Artificial Intelligence to deepen my expertise and contribute to innovative projects."
                 </Text>
             </VStack>
 
