@@ -81,29 +81,6 @@ export default function NavBar() {
                 ))}
             </Box>
             <Box display="flex" alignItems="center" gap={6}>
-                {/* EN/DE chọn ngôn ngữ */}
-                <Box display="flex" gap={2} alignItems="center">
-                    <Text
-                        cursor="pointer"
-                        fontWeight="bold"
-                        opacity={language === "EN" ? 1 : 0.4}
-                        onClick={() => setLanguage("EN")}
-                        _hover={{ opacity: 1 }}
-                    >
-                        EN
-                    </Text>
-                    <Text fontWeight="bold">/</Text>
-                    <Text
-                        cursor="pointer"
-                        fontWeight="bold"
-                        opacity={language === "DE" ? 1 : 0.4}
-                        onClick={() => setLanguage("DE")}
-                        _hover={{ opacity: 1 }}
-                    >
-                        DE
-                    </Text>
-                </Box>
-
                 <Link href="https://linkedin.com/in/tuan-minh-do-2262b3236" target="_blank" rel="noopener noreferrer">
                     <IconButton aria-label="LinkedIn" variant="ghost" color="white">
                         <FaLinkedin />

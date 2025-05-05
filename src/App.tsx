@@ -30,7 +30,8 @@ function App() {
                     height: "100vh",
                     background: "transparent",
                     position: "relative",
-                    zIndex: 1
+                    zIndex: 1,
+                    scrollMarginTop: "80px" // thêm dòng này
                 }}
             >
                 <Home />
@@ -39,6 +40,8 @@ function App() {
             <section
                 id="experiences"
                 style={{
+                    paddingTop: "100px",
+                    height: "100vh",
                     background: "transparent",
                     position: "relative",
                     zIndex: 1
@@ -53,7 +56,8 @@ function App() {
                     height: "100vh",
                     background: "transparent",
                     position: "relative",
-                    zIndex: 1
+                    zIndex: 1,
+                    scrollMarginTop: "100px" // thêm dòng này
                 }}
             >
                 <Projects />
@@ -65,7 +69,8 @@ function App() {
                     height: "100vh",
                     background: "transparent",
                     position: "relative",
-                    zIndex: 1
+                    zIndex: 1,
+                    scrollMarginTop: "80px" // thêm dòng này
                 }}
             ><Skills />
             </section>

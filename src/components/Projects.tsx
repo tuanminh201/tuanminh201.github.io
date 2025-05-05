@@ -1,121 +1,202 @@
-import React from 'react';
-import {
-    Box,
-    Flex,
-    Heading,
-    Text,
-    Image,
-    Container,
-    Grid,
-    GridItem,
-    Badge
-} from '@chakra-ui/react';
+    import React, { useState } from 'react';
+    import {
+        Box,
+        Flex,
+        Heading,
+        Text,
+        Image,
+        Badge,
+        IconButton
+    } from '@chakra-ui/react';
+    import { motion, AnimatePresence } from 'framer-motion';
 
-// Import hình ảnh
-import portfolioImage from '../assets/img/portfolio_preview.png';
-import simulationImage from '../assets/img/simulation_ui.png';
 
-const ProjectsShowcase = () => {
+    import portfolioImage from '../assets/img/portfolio_preview.png';
+    import simulationImage from '../assets/img/simulation_ui.png';
+    import recipeProjectImage from '../assets/img/recipeProject.png';
+
+    // Dự án
     const projects = [
         {
-            title: "Portfolio Website",
-            time: "2024",
-            tools: ["React", "TypeScript", "Chakra UI"],
-            image: portfolioImage, // Dùng hình ảnh đã import
+            title: 'AI-based Recipe Suggestion Website',
+            time: '2025',
+            tools: ['React', 'TypeScript', 'Bootstrap', 'Gemini 2.5'],
+            image: recipeProjectImage,
             description: [
-                "Built a personal portfolio with rocket animation, typing effect, and smooth scroll.",
-                "Responsive layout using Chakra UI and Framer Motion."
+                'Developed a recipe suggestion website where users input available ingredients and preferences.',
+                'Used Gemini 2.5 for AI-powered suggestions based on user data like BMI and cuisine taste.'
             ]
         },
         {
-            title: "Active Learning Simulation UI",
-            time: "2024",
-            tools: ["React", "TypeScript", "MATLAB Simulink"],
-            image: simulationImage, // Dùng hình ảnh đã import
+            title: 'Portfolio Website',
+            time: '2024',
+            tools: ['React', 'TypeScript', 'Chakra UI'],
+            image: portfolioImage,
             description: [
-                "Frontend UI for an active learning simulator.",
-                "Collaborated with research team on rendering components and simulation integration."
+                'Built a personal portfolio with rocket animation, typing effect, and smooth scroll.',
+                'Responsive layout using Chakra UI and Framer Motion.'
+            ]
+        },
+        {
+            title: 'Active Learning Simulation UI',
+            time: '2024',
+            tools: ['React', 'TypeScript', 'MATLAB Simulink'],
+            image: simulationImage,
+            description: [
+                'Frontend UI for an active learning simulator.',
+                'Collaborated with research team on rendering components and simulation integration.'
             ]
         }
     ];
 
-    return (
-        <Container maxW="container.xl" py={8}>
-            <Heading
-                textAlign="center"
-                mb={8}
-                bgGradient="linear(to-r, blue.500, purple.500)"
-                bgClip="text"
-            >
-                My Projects
-            </Heading>
-            <Grid templateColumns={['repeat(1, 1fr)', null, 'repeat(2, 1fr)']} gap={6}>
-                {projects.map((project, index) => (
-                    <GridItem key={index}>
-                        <Box
-                            bg="white"
-                            boxShadow="lg"
-                            borderRadius="xl"
-                            overflow="hidden"
-                            transition="transform 0.3s ease"
-                            _hover={{
-                                transform: 'scale(1.05)',
-                                boxShadow: '2xl'
-                            }}
-                            bgGradient="linear(to-br, blue.50, purple.50)"
-                        >
-                            <Box p={6}>
-                                <Flex justify="space-between" mb={4}>
-                                    <Heading size="md" color="blue.700">
-                                        {project.title}
-                                    </Heading>
-                                    <Text fontSize="sm" color="gray.500">
-                                        {project.time}
-                                    </Text>
-                                </Flex>
+    // motion wrapper
+    const MotionBox = motion(Box);
 
-                                {project.image && (
+    const ProjectsShowcase = () => {
+        const [currentIndex, setCurrentIndex] = useState(0);
+        const [direction, setDirection] = useState(0);
+
+        const handleChange = (next: boolean) => {
+            const newIndex = next
+                ? (currentIndex + 1) % projects.length
+                : (currentIndex - 1 + projects.length) % projects.length;
+            setDirection(next ? 1 : -1);
+            setCurrentIndex(newIndex);
+        };
+
+        const project = projects[currentIndex];
+
+        return (
+            <Box maxW="100vw" px={[4, 8, 16]} py={16}>
+                <Heading
+                    textAlign="center"
+                    mb={12}
+                    fontSize={['3xl', '4xl', '5xl']}
+                    bgGradient="linear(to-r, blue.400, purple.400)"
+                    bgClip="text"
+                >
+                    My Projects
+                </Heading>
+
+                <Flex
+                    align="center"
+                    justify="center"
+                    position="relative"
+                    width="100%"
+                    maxW="8xl"
+                    mx="auto"
+                >
+                    {/* Nút trái */}
+                    <IconButton
+                        aria-label="Previous"
+                        onClick={() => handleChange(false)}
+                        borderRadius="full"
+                        position="absolute"
+                        left="-240px"
+                        top="50%"
+                        transform="translateY(-50%)"
+                        size="lg"
+                        bg="purple.600"
+                        color="white"
+                        fontSize="2xl"
+                        fontWeight="bold"
+                        _hover={{ bg: 'purple.700' }}
+                        w="60px"
+                        h="60px"
+                    >
+                        {"<"}
+                    </IconButton>
+
+                    {/* Project content */}
+                    <AnimatePresence mode="wait" initial={false}>
+                        <MotionBox
+                            key={currentIndex}
+                            initial={{ x: direction * 300, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            exit={{ x: -direction * 300, opacity: 0 }}
+                            transition={{ duration: 0.5 }}
+                            w="full"
+                        >
+                            <Flex
+                                direction={['column', null, 'row']}
+                                bg="gray.100"
+                                borderRadius="2xl"
+                                boxShadow="2xl"
+                                overflow="hidden"
+                                p={[6, 10]}
+                                align="center"
+                                w="full"
+                                minH={['auto', null, '500px']}
+                            >
+                                <Box flex="1" mb={[6, null, 0]} mr={[0, null, 10]}>
                                     <Image
                                         src={project.image}
                                         alt={project.title}
-                                        borderRadius="md"
+                                        borderRadius="lg"
                                         objectFit="cover"
-                                        h="250px"
-                                        w="full"
-                                        mb={4}
+                                        w="100%"
+                                        maxH="400px"
                                     />
-                                )}
+                                </Box>
 
-                                <Box mb={4}>
-                                    {project.description.map((desc, descIndex) => (
-                                        <Text key={descIndex} fontSize="sm" color="gray.600" mb={2}>
+                                <Box flex="1">
+                                    <Heading size="lg" mb={2} color="blue.700">
+                                        {project.title}
+                                    </Heading>
+                                    <Text fontSize="sm" color="gray.600" mb={4}>
+                                        {project.time}
+                                    </Text>
+
+                                    {project.description.map((desc, i) => (
+                                        <Text key={i} fontSize="md" color="gray.700" mb={2}>
                                             {desc}
                                         </Text>
                                     ))}
+
+                                    <Flex wrap="wrap" mt={4}>
+                                        {project.tools.map((tool, i) => (
+                                            <Badge
+                                                key={i}
+                                                colorScheme="purple"
+                                                mr={2}
+                                                mb={2}
+                                                px={2}
+                                                py={1}
+                                                fontSize="sm"
+                                            >
+                                                {tool}
+                                            </Badge>
+                                        ))}
+                                    </Flex>
                                 </Box>
+                            </Flex>
+                        </MotionBox>
+                    </AnimatePresence>
 
-                                <Flex wrap="wrap">
-                                    {project.tools.map((tool, toolIndex) => (
-                                        <Badge
-                                            key={toolIndex}
-                                            colorScheme="purple"
-                                            mr={2}
-                                            mb={2}
-                                            px={2}
-                                            py={1}
-                                            fontSize="sm"
-                                        >
-                                            {tool}
-                                        </Badge>
-                                    ))}
-                                </Flex>
-                            </Box>
-                        </Box>
-                    </GridItem>
-                ))}
-            </Grid>
-        </Container>
-    );
-};
+                    {/* Nút phải */}
+                    <IconButton
+                        aria-label="Next"
+                        onClick={() => handleChange(true)}
+                        borderRadius="full"
+                        position="absolute"
+                        right="-240px"
+                        top="50%"
+                        transform="translateY(-50%)"
+                        size="lg"
+                        bg="purple.600"
+                        color="white"
+                        fontSize="2xl"
+                        fontWeight="bold"
+                        _hover={{ bg: 'purple.700' }}
+                        w="60px"
+                        h="60px"
+                    >
+                        {">"}
+                    </IconButton>
 
-export default ProjectsShowcase;
+                </Flex>
+            </Box>
+        );
+    };
+
+    export default ProjectsShowcase;

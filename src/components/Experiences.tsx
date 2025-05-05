@@ -41,7 +41,7 @@ export default function ExperienceTimeline() {
     return (
         <Box position="relative" maxW="6xl" mx="auto" py={10} px={6}>
             <Text fontSize="5xl" fontWeight="bold" textAlign="center" mb={12} color="white">
-                🗓 Work Experiences Timeline
+                🗓 Experiences Timeline
             </Text>
 
             <Box position="relative" height="100%" ml="1px">
