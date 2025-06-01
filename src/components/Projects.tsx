@@ -56,7 +56,7 @@ const projects = [
             'Built a fullstack web app to manage tasks in a weekly calendar layout with separate columns per day.',
             'Implemented features like add/delete tasks, drag-and-drop between days, and task completion toggles.',
             'Runs entirely locally using H2 Database, no need for API keys. Includes a beautiful animated particles background.',
-            'Lesson learned: Strengthened my fullstack development skills, especially integrating drag-and-drop functionality and local database handling.'
+            'Lesson learned: Strengthened my fullstack development skills, get familiar with local database handling.'
         ],
         projectLink: 'https://github.com/tuanminh201/weekly-todo',
         githubLink: 'https://github.com/tuanminh201/weekly-todo'
