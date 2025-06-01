@@ -9,21 +9,13 @@ import {
     HStack
 } from "@chakra-ui/react";
 import {
-    FaJs,
-    FaPython,
-    FaReact,
-    FaNodeJs,
+    FaJs, FaPython, FaReact, FaNodeJs, FaJava, FaDatabase
 } from "react-icons/fa";
 import {
-    SiCplusplus,
-    SiTypescript,
-    SiTensorflow,
-    SiPytorch,
-    SiFlask,
-    SiMongodb,
-    SiMysql,
-    SiPostman
+    SiCplusplus, SiTypescript, SiTensorflow, SiPytorch,
+    SiFlask, SiPostman, SiPowerbi
 } from "react-icons/si";
+import { MdCode } from "react-icons/md"; // for VBA fallback icon
 
 const skills = [
     {
@@ -40,6 +32,11 @@ const skills = [
         title: "C++",
         description: "Powerful for performance-critical and system-level applications.",
         icon: <SiCplusplus size="2em" color="#00599C" />
+    },
+    {
+        title: "Java",
+        description: "Widely-used OOP language, perfect for enterprise-level backend development.",
+        icon: <FaJava size="2em" color="#f89820" />
     },
     {
         title: "TypeScript",
@@ -72,19 +69,19 @@ const skills = [
         icon: <SiFlask size="2em" color="#000000" />
     },
     {
-        title: "RestAPI",
+        title: "RESTAPI",
         description: "Standard architecture for scalable API design.",
         icon: <SiPostman size="2em" color="#FF6C37" />
     },
     {
-        title: "MongoDB",
-        description: "NoSQL database for flexible, scalable data storage.",
-        icon: <SiMongodb size="2em" color="#47A248" />
+        title: "VBA",
+        description: "Automates tasks in Excel and Office apps; handy for scripting and macros.",
+        icon: <MdCode size="2em" color="#00A859" />
     },
     {
-        title: "MySQL",
-        description: "Reliable relational database for structured data.",
-        icon: <SiMysql size="2em" color="#00758F" />
+        title: "Power BI",
+        description: "Business intelligence tool for interactive data visualizations and dashboards.",
+        icon: <SiPowerbi size="2em" color="#F2C811" />
     }
 ];
 

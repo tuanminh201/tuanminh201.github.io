@@ -1,13 +1,23 @@
-import { Flex, Button, Image, Box, IconButton, Link, Text } from "@chakra-ui/react";
+import { Flex, Button, Image, Box, IconButton, Link } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import logo from "../assets/img/logo.png";
 
+// Các section có trên trang (thêm "offers")
+const sections = ["home", "experiences", "projects", "skills", "offers"];
+
+// Map section -> label đẹp
+const sectionLabels: Record<string, string> = {
+    home: "Home",
+    experiences: "Experiences",
+    projects: "Projects",
+    skills: "Skills",
+    offers: "Offers"
+};
+
 export default function NavBar() {
     const [activeSection, setActiveSection] = useState("home");
     const [language, setLanguage] = useState<"EN" | "DE">("EN");
-
-    const sections = ["home", "experiences", "projects", "skills"];
 
     const scrollToSection = (id: string) => {
         if (typeof window !== "undefined") {
@@ -49,7 +59,7 @@ export default function NavBar() {
                 if (section) observer.unobserve(section);
             });
         };
-    }, [sections]);
+    }, []);
 
     return (
         <Flex
@@ -65,7 +75,10 @@ export default function NavBar() {
             height="80px"
             color="white"
         >
+            {/* Logo */}
             <Image src={logo} height="60px" />
+
+            {/* Nav buttons */}
             <Box display="flex" alignItems="center" gap={8}>
                 {sections.map((section) => (
                     <Button
@@ -76,21 +89,33 @@ export default function NavBar() {
                         onClick={() => scrollToSection(section)}
                         color={activeSection === section ? "purple.500" : "white"}
                     >
-                        {section.charAt(0).toUpperCase() + section.slice(1)}
+                        {sectionLabels[section]}
                     </Button>
                 ))}
             </Box>
+
+            {/* Social icons */}
             <Box display="flex" alignItems="center" gap={6}>
-                <Link href="https://linkedin.com/in/tuan-minh-do-2262b3236" target="_blank" rel="noopener noreferrer">
+                <Link
+                    href="https://linkedin.com/in/tuan-minh-do-2262b3236"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     <IconButton aria-label="LinkedIn" variant="ghost" color="white">
                         <FaLinkedin />
                     </IconButton>
                 </Link>
-                <Link href="https://github.com/tuanminh201" target="_blank" rel="noopener noreferrer">
+
+                <Link
+                    href="https://github.com/tuanminh201"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     <IconButton aria-label="GitHub" variant="ghost" color="white">
                         <FaGithub />
                     </IconButton>
                 </Link>
+
                 <Link href="mailto:do.tuanminh201@gmail.com">
                     <IconButton aria-label="Email" variant="ghost" color="white">
                         <FaEnvelope />

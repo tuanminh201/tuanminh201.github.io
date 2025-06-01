@@ -9,7 +9,6 @@ const MotionBox = motion(Box);
 const MotionImage = motion(Image);
 const MotionText = motion(Text);
 
-// Dấu nhấp nháy animation
 const blink = keyframes`
     0% { opacity: 1; }
     50% { opacity: 0; }

@@ -1,7 +1,7 @@
 import { Box, Text, VStack, HStack, Icon, Flex, Badge, Image } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { FaBriefcase } from "react-icons/fa";
-import DBLogo from "../assets/img/db_logo.png";
+import DBLogo from "../assets/img/db_logo.png"
 
 const MotionBox = motion(Box);
 
@@ -13,9 +13,10 @@ const experiences = [
         tech: ["Data Analysis","VBA/Excel","PowerBI"],
         highlights: [
             "Collected and organized datasets from various sources",
-            "Cleaned and preprocessed data to ensure accuracy and consistency",
-            "Performed statistical analyses and created insightful reports",
-            "Collaborated with teams to support data-driven initiatives"
+            "Automated routine tasks using VBA for scripts and Excel to increase operational efficiency",
+            "Created interactive dashboards and reports with Power BI and PowerPoint to visualize key metrics",
+            "Collaborated with teams to support data-driven initiatives",
+            "Tools: VBA, Excel, Power BI, PowerPoint"
         ],
         side: "left",
         color: "purple",
@@ -24,7 +25,7 @@ const experiences = [
     {
         role: "Customer Support & English Tutor",
         company: "Uni English Zentrum",
-        time: "Aug 2018 - Jun 2019",
+        time: "Aug 2018 - Oct 2018",
         tech: ["Communication", "Customer Service"],
         highlights: [
             "Advised and supported students with their language needs",

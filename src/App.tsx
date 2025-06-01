@@ -6,23 +6,26 @@ import ParticlesBackground from "./components/ParticlesBackground";
 import ExperienceTimeline from "./components/Experiences";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
+import Offers from "./components/Offers";
 
 function App() {
     return (
         <div>
-            {/* Particles ở dưới cùng */}
-            <div style={{
-                position: "fixed",
-                top: 0,
-                left: 0,
-                width: "100vw",
-                height: "100vh",
-                zIndex: 0
-            }}>
+            <div
+                style={{
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    width: "100vw",
+                    height: "100vh",
+                    zIndex: 0
+                }}
+            >
                 <ParticlesBackground />
             </div>
 
             <NavBar />
+
 
             <section
                 id="home"
@@ -31,7 +34,7 @@ function App() {
                     background: "transparent",
                     position: "relative",
                     zIndex: 1,
-                    scrollMarginTop: "80px" // thêm dòng này
+                    scrollMarginTop: "80px"
                 }}
             >
                 <Home />
@@ -50,6 +53,7 @@ function App() {
                 <ExperienceTimeline />
             </section>
 
+
             <section
                 id="projects"
                 style={{
@@ -57,7 +61,7 @@ function App() {
                     background: "transparent",
                     position: "relative",
                     zIndex: 1,
-                    scrollMarginTop: "100px" // thêm dòng này
+                    scrollMarginTop: "100px"
                 }}
             >
                 <Projects />
@@ -70,9 +74,22 @@ function App() {
                     background: "transparent",
                     position: "relative",
                     zIndex: 1,
-                    scrollMarginTop: "80px" // thêm dòng này
+                    scrollMarginTop: "80px"
                 }}
-            ><Skills />
+            >
+                <Skills />
+            </section>
+            <section
+                id="offers"
+                style={{
+                    minHeight: "100vh",
+                    background: "transparent",
+                    position: "relative",
+                    zIndex: 1,
+                    scrollMarginTop: "80px"
+                }}
+            >
+                <Offers />
             </section>
 
         </div>
